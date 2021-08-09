@@ -1,0 +1,28 @@
+$ dmesg | grep -i spi
+$ lspci | grep -i spi
+00:1e.2 Signal processing controller: Intel Corporation Sunrise Point-LP Serial IO SPI Controller #0 (rev 21)
+00:1f.0 ISA bridge: Intel Corporation Sunrise Point LPC Controller/eSPI Controller (rev 21)
+
+$ cat /proc/interrupts  | grep -i spi
+ 22:          0          0   IO-APIC  22-fasteoi   idma64.4, pxa2xx-spi.4
+ 23:          0          0   IO-APIC  23-fasteoi   mmc1, idma64.5, pxa2xx-spi.5
+
+$ cat /proc/iomem  | grep -i spi
+      00000000-00000000 : pxa2xx-spi.4 lpss_dev
+
+$ lsmod  | grep -i spi
+spi_pxa2xx_platform    32768  0
+
+insmod /lib/modules/5.8.0-63-generic/kernel/drivers/spi/spidev.ko 
+
+ls /sys/devices/pci0000\:00/0000:00:1e.2 
+
+
+# cat /proc/interrupts | grep spi
+ 22:          0          0   IO-APIC  22-fasteoi   idma64.4, pxa2xx-spi.4
+
+# cat /proc/iomem | grep spi
+      b131d000-b131d1ff : pxa2xx-spi.4 lpss_dev
+
+# cat /sys/bus/pci/devices/0000\:00\:1e.2/firmware_node/path 
+\_SB_.PCI0.SPI0
