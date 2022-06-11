@@ -192,3 +192,15 @@ void main()
 	printf("num_2=%d,num_3=%d\n", num_2, num_3);
 	printf("cnt2=%d,cnt3=%d\n", cnt2, cnt3);
 }
+/*
+solved:
+*1  and /1 is the same
+(A B) (C D) and (C D) (A B) is the same
+
+
+to be solved:
+A*B*C*D
+ABBC
+
+
+/*
